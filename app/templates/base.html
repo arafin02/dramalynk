@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:url" content="{{geturl}}" />
+    <meta
+      name="description"
+      content="{{site_desc}}{{drama.description}}{{episode.drama.description}}"
+    />
+    <meta
+      name="description"
+      property="og:description"
+      content="{{site_desc}}{{drama.description}}{{episode.drama.description}}"
+    />
+    <meta
+      property="og:title"
+      content="{{genre.name}} {{episode.drama.title}} {{episode.ep_no}} {{drama.title}}
+      {{Sitename}}"
+    />
+    <meta
+      property="og:image"
+      content="{{drama.ver_poster}}{{episode.drama.ver_poster}}"
+    />
+    <meta
+      property="og:image:alt"
+      content="{{drama.title}}{{episode.drama.title}} {{episode.ep_no}}"
+    />
+    <meta
+      name="twitter:image"
+      content="{{drama.ver_poster}}{{episode.drama.ver_poster}}"
+    />
+    <meta
+      property="twitter:image:alt"
+      content="{{drama.title}}{{episode.drama.title}} {{episode.ep_no}} {{Sitename}}"
+    />
+    <meta
+      name="twitter:card"
+      content="{{drama.title}}{{episode.drama.title}} {{episode.ep_no}} {{Sitename}}"
+    />
+    <meta name="twitter:site" content="@{{Sitename}}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4737668081261678"
+      crossorigin="anonymous"
+    ></script>
+    <title>
+      {{genre.name}} {{episode.drama.title}} {{episode.ep_no}} {{drama.title}}
+      {{Sitename}}
+    </title>
+    <style>
+      .fs-7 {
+        font-size: 0.875rem !important;
+      }
+      .fs-8 {
+        font-size: 0.5 rem !important;
+      }
+    </style>
+  </head>
+  <body class="">
+    {% include "navbar.html" %}
+    <!-- default content text (typically empty) -->
+    <div class="">{% block content %} {% endblock %}</div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

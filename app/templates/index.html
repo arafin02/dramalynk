@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block content %}
+<div class="fs-5 border-bottom py-3 container">Drama</div>
+<div class="pt-3 row container mx-auto">
+  {% for drama in latest_drama %}
+  <div class="text-wrap col-lg-2 col-md-3 col-4 mb-lg-3 mb-2">
+    <a
+      href="{% url 'details' drama.slug %}"
+      class="d-flex flex-column text-decoration-none link-secondary fs-7"
+    >
+      <img src="{{drama.ver_poster}}" alt="{{drama.title}}" class="w-100" />
+      <h6 class="fs-7 link-secondary fw-normal">{{drama.title}}</h6>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+<div class="d-sm-block d-none w-100 container"></div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if latest_drama.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ latest_drama.previous_page_number }}"
+        >Previous</a
+      >
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link disabled">Previous</a>
+    </li>
+    {% endif %} {% for page in pages %}
+    <li class="page-item">
+      <a
+        class="page-link {% if page == latest_drama.number %}active{% endif %}"
+        href="?page={{ page }}"
+        >{{page}}</a
+      >
+    </li>
+    {% endfor %} {% if latest_drama.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ latest_drama.next_page_number }}"
+        >Next</a
+      >
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link disabled">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row container-fluid mx-auto">
+  <div
+    class="col-lg-2 d-none d-lg-block d-xl-block d-flex flex-column mx-auto bg-body-tertiary mt-3"
+  ></div>
+  <div class="col-lg-7 col-md-8 col-sm-12 mx-auto mt-3">
+    <div class="ratio ratio-16x9">
+      <iframe
+        src="{{episode.watch_online}}"
+        title="{{episode.drama.title}} Episode{{episode.ep_no}}"
+        frameborder="0"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        class="w-100 rounded-1"
+      ></iframe>
+    </div>
+    <div>
+      <h3 class="mt-2 fs-3">
+        {{episode.drama.title}} : Episode {{episode.ep_no}}
+      </h3>
+      <h6 class="fs-8" style="font-size: smaller">
+        <a
+          class="text-decoration-none link-primary"
+          href="{% url 'details' episode.drama.slug %}"
+          >{{episode.drama.title}} S{{episode.drama.season}}</a
+        >
+      </h6>
+      <h5 class="fs-5">
+        Download {{episode.drama.title}} Episode {{episode.ep_no}} for FREE
+      </h5>
+      <div class="d-flex justify-content-around align-items-center mt-3">
+        <a
+          role="button"
+          class="fw-semibold btn btn-outline-secondary rounded-5"
+          href="{{episode.dlink}}"
+          rel="nofollow"
+          ><i class="bi bi-download"></i> Download</a
+        >
+        <a
+          role="button"
+          class="fw-semibold btn btn-outline-secondary rounded-5"
+          href="{{episode.sublink}}"
+          rel="nofollow"
+          ><i class="bi bi-download"></i> Subtitle</a
+        >
+      </div>
+    </div>
+  </div>
+  <div
+    class="col-lg-2 col-md-4 col-sm-12 bg-body-tertiary rounded-2 w-full mx-auto mb-3 mt-3 px-1"
+  >
+    <div class="px-2 py-1 fw-bold">{{episode.drama.title}}</div>
+    <div class="px-2 fs-7">{{episode.ep_no}}/{{episode.drama.epi_num}}</div>
+    <ul class="list-group list-group-flush py-2">
+      {% for current_episode in episodes %}
+      <li
+        class="list-group-item {% if current_episode.ep_no == episode.ep_no %}active{% endif %}"
+      >
+        <a
+          href="{% url 'episode' current_episode.ep_slug %}"
+          class="text-decoration-none {% if current_episode.ep_no == episode.ep_no %}link-light{% endif %}"
+          >Episode {{current_episode.ep_no}}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

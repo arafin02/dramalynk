@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row container mx-auto">
+  <form
+    class="d-flex mt-2 mt-lg-0 mt-md-0 d-lg-none d-md-none mt-1"
+    role="search"
+    method="get"
+    action="{% url 'search' %}"
+  >
+    <input
+      class="form-control me-1"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      name="q"
+    />
+    <button class="btn btn-primary" type="submit">
+      <i class="bi bi-search"></i>
+    </button>
+  </form>
+  {% if drama_list %} {% for drama in drama_list %}
+  <div class="col-lg-2 col-md-3 col-4 text-wrap mb-lg-3 mb-2 mt-3">
+    <a
+      href="{% url 'details' drama.slug %}"
+      class="d-flex flex-column text-decoration-none link-secondary fs-7"
+    >
+      <img src="{{drama.ver_poster}}" alt="" class="w-100" />
+      <div class="">{{drama.title}}</div>
+    </a>
+  </div>
+  {% endfor %} {% else %}
+  <div class="d-flex justify-content-center h-50 mt-3">
+    <div>
+      <h3 class="text-center">No results found :)</h3>
+      <p class="lead w-100 text-center mx-auto">try searching again</p>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

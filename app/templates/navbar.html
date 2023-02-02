@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">DramaLynk</a>
+    <div>
+      <button class="nav-item dropdown btn btn-dark d-lg-none d-md-none">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Genres
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          {% for genre in genres %}
+          <li>
+            <a class="dropdown-item" href="{% url 'genre' genre.name %}"
+              >{{genre}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </button>
+      <button
+        class="btn btn-primary d-lg-none d-md-none {% if getpath == '/search'%}  d-none {%endif%}"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+      >
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-inline d-md-inline"
+      >
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Genres
+          </a>
+          <ul class="dropdown-menu">
+            {% for genre in genres %}
+            <li>
+              <a class="dropdown-item" href="{% url 'genre' genre.name %}"
+                >{{genre}}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      <span></span>
+      <form
+        class="d-flex mt-2 mt-lg-0 mt-md-0"
+        role="search"
+        method="get"
+        action="{% url 'search' %}"
+      >
+        <input
+          class="form-control me-1"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="q"
+        />
+        <button class="btn btn-primary" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
